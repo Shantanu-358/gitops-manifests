@@ -20,7 +20,7 @@ spec:
           image: 526727148285.dkr.ecr.ap-south-2.amazonaws.com/backend-api:latest
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8080
+            - containerPort: 8000
               name: http
           env:
             # References DATABASE_URL from app-secrets
@@ -37,7 +37,7 @@ spec:
                   key: JWT_SECRET_KEY
             # Standard non-sensitive app configurations
             - name: PORT
-              value: "8080"
+              value: "8000"
             - name: NODE_ENV
               value: "production"
           resources:
@@ -50,13 +50,13 @@ spec:
           readinessProbe:
             httpGet:
               path: /health
-              port: 8080
+              port: 8000
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /health
-              port: 8080
+              port: 8000
             initialDelaySeconds: 15
             periodSeconds: 20
 ---
@@ -70,8 +70,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8000
+      targetPort: 8000
       protocol: TCP
   selector:
     app: backend-api

@@ -1,2 +1,3 @@
 secrets.yaml
 global-bundle.pem
+service-account.yaml
