@@ -7,4 +7,4 @@ resources:
 images:
 - name: 526727148285.dkr.ecr.ap-south-2.amazonaws.com/frontend
   newName: 526727148285.dkr.ecr.ap-south-2.amazonaws.com/frontend
-  newTag: ce0df7e
+  newTag: 8f85180
