@@ -2,8 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - backend-deployment.yaml
+- backend-deployment.yaml
 
 images:
-  - name: 526727148285.dkr.ecr.ap-south-2.amazonaws.com/backend-api
-    newTag: latest
+- name: 526727148285.dkr.ecr.ap-south-2.amazonaws.com/backend-api
+  newName: 526727148285.dkr.ecr.ap-south-2.amazonaws.com/backend-api
+  newTag: ce0df7e
