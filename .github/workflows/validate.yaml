@@ -1,0 +1,25 @@
+name: Validate Gitops Manifests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-k8s:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate k8s Schema
+        uses: yannh/kubeconform-action@v0.2.2
+        with:
+          k8s_version: '1.30.0'
+          files: 'apps/**'
+
+      - name: Trivy Config Scan
+        uses: aquasecurity/trivy-action@0.36.0
+        with:
+          scan-type: 'config'
+          scan-dir: './apps'
+          severity: 'CRITICAL,HIGH'
