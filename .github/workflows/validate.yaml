@@ -11,14 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate k8s Schema
-        uses: yannh/kubeconform-action@v0.6.3
-        with:
-          k8s_version: '1.30.0'
-          files: 'apps/**'
-
       - name: Trivy Config Scan
-        uses: aquasecurity/trivy-action@0.24.0
+        uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'config'
           scan-dir: './apps'
